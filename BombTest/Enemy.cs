@@ -9,12 +9,12 @@ namespace BombTest
     public class Enemy
     {
         Pack pack;
-        private int killedCount;
+        private int killCount;
 
-        public Enemy(Pack pack, int killed)
+        public Enemy(Pack pack, int killCount)
         {
             this.pack = pack;
-            this.killedCount = killed;
+            this.killCount = killCount;
         }
 
         public Pack GetPack()
@@ -24,7 +24,7 @@ namespace BombTest
 
         public int GetKilled()
         {
-            return this.killedCount;
+            return this.killCount;
         }
     }
 }

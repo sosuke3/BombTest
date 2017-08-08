@@ -9,6 +9,7 @@ namespace BombTest
     public class BombTest
     {
         Random rand;
+
         int green_dagger = 3;
         int green_sword = 1;
         int blue_sword = 1;
@@ -23,7 +24,7 @@ namespace BombTest
             this.rand = rand;
         }
 
-        List<byte> mt_shuffle(List<byte> array)
+        List<byte> Shuffle(List<byte> array)
         {
             List<byte> ret = new List<byte>();
 
@@ -35,20 +36,9 @@ namespace BombTest
             }
 
             return ret;
-            /*
-function mt_shuffle(array $array) {
-    $new_array = [];
-    while(count($array)) {
-        $pull_key = mt_rand(0, count($array) - 1);
-        $new_array = array_merge($new_array, array_splice($array, $pull_key, 1));
-    }
-    return $new_array;
-}
-             */
-
         }
 
-        bool isBomb(byte? id)
+        bool IsBomb(byte? id)
         {
             return (id == 0xDC || id == 0xDD || id == 0xDE);
         }
@@ -70,7 +60,7 @@ function mt_shuffle(array $array) {
                     0xDB, // saved fish prize
                 };
 
-            List<byte> shuffled = mt_shuffle(prizes.ToList());
+            List<byte> shuffled = Shuffle(prizes.ToList());
 
             // None of these pops should actually be necessary, but we might as well.
             // account for trees
@@ -126,7 +116,7 @@ function mt_shuffle(array $array) {
 
                         for(int l=0; l<enemy.GetKilled(); l++)
                         {
-                            if(isBomb(enemy.GetPack().GetPrize()))
+                            if(IsBomb(enemy.GetPack().GetPrize()))
                             {
                                 found_bomb = true;
                                 break;
